@@ -8,10 +8,10 @@ const TestRailCache = require('./testrail.cache');
 import { TestRailOptions, TestRailResult } from './testrail.interface';
 
 export class TestRail {
-  private base: String;
-  private runId: Number;
-  private includeAll: Boolean = true;
-  private caseIds: Number[] = [];
+  private base: string;
+  private runId: number;
+  private includeAll: boolean = true;
+  private caseIds: number[] = [];
   private retries: number;
 
   constructor(private options: TestRailOptions) {
@@ -81,7 +81,8 @@ export class TestRail {
           name,
           description,
           include_all: this.includeAll,
-          case_ids: this.caseIds
+          case_ids: this.caseIds,
+          refs: this.options.refs,
         }),
       })
       .then(response => {

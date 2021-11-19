@@ -127,7 +127,8 @@ var TestRail = /** @class */ (function () {
                 name: name,
                 description: description,
                 include_all: this.includeAll,
-                case_ids: this.caseIds
+                case_ids: this.caseIds,
+                refs: this.options.refs,
             }),
         })
             .then(function (response) {

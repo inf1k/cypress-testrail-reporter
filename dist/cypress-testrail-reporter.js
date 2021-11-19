@@ -46,6 +46,9 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
         if (process.env.CYPRESS_TESTRAIL_REPORTER_GROUPID) {
             _this.reporterOptions.runName = process.env.CYPRESS_TESTRAIL_REPORTER_GROUPID;
         }
+        if (process.env.CYPRESS_TESTRAIL_REPORTER_REFS) {
+            _this.reporterOptions.refs = process.env.CYPRESS_TESTRAIL_REPORTER_REFS;
+        }
         _this.testRailApi = new testrail_1.TestRail(_this.reporterOptions);
         _this.testRailValidation = new testrail_validation_1.TestRailValidation(_this.reporterOptions);
         /**
@@ -160,7 +163,7 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
     CypressTestRailReporter.prototype.submitResults = function (status, test, comment) {
         var _a;
         var _this = this;
-        var caseIds = shared_1.titleToCaseIds(test.title);
+        var caseIds = (0, shared_1.titleToCaseIds)(test.title);
         var invalidCaseIds = caseIds.filter(function (caseId) { return !_this.serverTestCaseIds.includes(caseId); });
         caseIds = caseIds.filter(function (caseId) { return _this.serverTestCaseIds.includes(caseId); });
         if (invalidCaseIds.length > 0)
